@@ -1,6 +1,7 @@
 @prefix : <http://www.epos-eu.org/dcat-ap#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix oa: <https://www.w3.org/ns/oa> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix org: <http://www.w3.org/ns/org#> .
@@ -547,6 +548,60 @@ dct:temporal rdf:type owl:ObjectProperty ;
 
 ###  http://purl.org/dc/terms/type
 dct:type rdf:type owl:ObjectProperty .
+
+
+###  http://www.epos-eu.org/dcat-ap#affiliation
+epos:affiliation rdf:type owl:ObjectProperty ;
+                 rdfs:domain epos:Person ;
+                 rdfs:range epos:Organisation .
+
+
+###  http://www.epos-eu.org/dcat-ap#annotation
+epos:annotation rdf:type owl:ObjectProperty ;
+                rdfs:domain rdfs:Resource ;
+                rdfs:range oa:#Annotation .
+
+
+###  http://www.epos-eu.org/dcat-ap#author
+epos:author rdf:type owl:ObjectProperty ;
+            rdfs:domain epos:Publication ;
+            rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#contributor
+epos:contributor rdf:type owl:ObjectProperty ;
+                 rdfs:domain epos:Publication ;
+                 rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#financialContact
+epos:financialContact rdf:type owl:ObjectProperty ;
+                      rdfs:domain epos:Organisation ;
+                      rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#legalContact
+epos:legalContact rdf:type owl:ObjectProperty ;
+                  rdfs:domain epos:Organisation ;
+                  rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#owner
+epos:owner rdf:type owl:ObjectProperty ;
+           rdfs:domain epos:Publication ;
+           rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#publisher
+epos:publisher rdf:type owl:ObjectProperty ;
+               rdfs:domain epos:Publication ;
+               rdfs:range epos:Person .
+
+
+###  http://www.epos-eu.org/dcat-ap#scientificContact
+epos:scientificContact rdf:type owl:ObjectProperty ;
+                       rdfs:domain epos:Organisation ;
+                       rdfs:range epos:Person .
 
 
 ###  http://www.w3.org/ns/shacl#node
