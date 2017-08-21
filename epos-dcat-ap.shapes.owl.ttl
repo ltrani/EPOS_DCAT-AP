@@ -12,7 +12,7 @@
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix dash: <http://datashapes.org/dash#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix epos: <http://www.epos-eu.org/ns/epos#> .
+@prefix epos: <http://www.epos-eu.org/dcat-ap#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -741,86 +741,86 @@ dct:Standard rdf:type owl:Class .
 
 
 ###  http://www.epos-eu.org/dcat-ap#CatalogRecord
-:CatalogRecord rdf:type owl:Class ;
-               rdfs:subClassOf dcat:CatalogRecord ;
-               rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
+epos:CatalogRecord rdf:type owl:Class ;
+                   rdfs:subClassOf dcat:CatalogRecord ;
+                   rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Dataset
-:Dataset rdf:type owl:Class ;
-         rdfs:subClassOf dcat:Dataset ;
-         rdfs:comment "This is the EPOS specialisation of dcat:Dataset" ;
-         rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap/> ;
-         rdfs:label "Dataset" .
+epos:Dataset rdf:type owl:Class ;
+             rdfs:subClassOf dcat:Dataset ;
+             rdfs:comment "This is the EPOS specialisation of dcat:Dataset" ;
+             rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap/> ;
+             rdfs:label "Dataset" .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Distribution
-:Distribution rdf:type owl:Class ;
-              rdfs:subClassOf dcat:Distribution .
+epos:Distribution rdf:type owl:Class ;
+                  rdfs:subClassOf dcat:Distribution .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Equipment
-:Equipment rdf:type owl:Class ;
-           rdfs:subClassOf rdfs:Resource ;
-           rdfs:comment "Represent a generic equipment e.g. gps sensor, seismic stream" ;
-           rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
+epos:Equipment rdf:type owl:Class ;
+               rdfs:subClassOf rdfs:Resource ;
+               rdfs:comment "Represent a generic equipment e.g. gps sensor, seismic stream" ;
+               rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Facility
-:Facility rdf:type owl:Class ;
-          rdfs:subClassOf rdfs:Resource ;
-          rdfs:comment "EPOS Facility" ;
-          rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> ;
-          rdfs:label "Facility" .
+epos:Facility rdf:type owl:Class ;
+              rdfs:subClassOf rdfs:Resource ;
+              rdfs:comment "EPOS Facility" ;
+              rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> ;
+              rdfs:label "Facility" .
 
 
 ###  http://www.epos-eu.org/dcat-ap#ModelCode
-:ModelCode rdf:type owl:Class ;
-           rdfs:subClassOf schema:SoftwareSourceCode .
+epos:ModelCode rdf:type owl:Class ;
+               rdfs:subClassOf schema:SoftwareSourceCode .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Operation
-:Operation rdf:type owl:Class .
+epos:Operation rdf:type owl:Class .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Organisation
-:Organisation rdf:type owl:Class ;
-              rdfs:subClassOf vcard:Organization ;
-              rdfs:comment "EPOS Organisation" ;
-              rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
+epos:Organisation rdf:type owl:Class ;
+                  rdfs:subClassOf vcard:Organization ;
+                  rdfs:comment "EPOS Organisation" ;
+                  rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Person
-:Person rdf:type owl:Class ;
-        rdfs:subClassOf vcard:Individual ;
-        rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
+epos:Person rdf:type owl:Class ;
+            rdfs:subClassOf vcard:Individual ;
+            rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Project
-:Project rdf:type owl:Class ;
-         rdfs:subClassOf foaf:Project .
+epos:Project rdf:type owl:Class ;
+             rdfs:subClassOf foaf:Project .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Publication
-:Publication rdf:type owl:Class ;
-             rdfs:subClassOf foaf:Document ;
-             rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
+epos:Publication rdf:type owl:Class ;
+                 rdfs:subClassOf foaf:Document ;
+                 rdfs:isDefinedBy <http://www.epos-eu.org/dcat-ap> .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Service
-:Service rdf:type owl:Class ;
-         rdfs:subClassOf schema:Service ;
-         rdfs:comment "EPOS service" .
+epos:Service rdf:type owl:Class ;
+             rdfs:subClassOf schema:Service ;
+             rdfs:comment "EPOS service" .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Software
-:Software rdf:type owl:Class ;
-          rdfs:subClassOf schema:SoftwareApplication ;
-          rdfs:comment "EPOS Software" .
+epos:Software rdf:type owl:Class ;
+              rdfs:subClassOf schema:SoftwareApplication ;
+              rdfs:comment "EPOS Software" .
 
 
 ###  http://www.epos-eu.org/dcat-ap#Webservice
-:Webservice rdf:type owl:Class .
+epos:Webservice rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/shacl#NodeShape
@@ -1377,18 +1377,18 @@ spdx:checksum rdf:type owl:NamedIndividual .
 
 
 ###  http://www.epos-eu.org/dcat-ap#DateOrDateTimeDataType
-:DateOrDateTimeDataType rdf:type owl:NamedIndividual ,
-                                 sh:NodeShape ;
-                        sh:or [ ] ;
+epos:DateOrDateTimeDataType rdf:type owl:NamedIndividual ,
+                                     sh:NodeShape ;
+                            sh:or [ ] ;
 rdfs:comment "Date time date disjunction shape checks that a datatype property receives a date or a dateTime literal" ;
 rdfs:label "Date time date disjunction" ;
 sh:message "The values must be data typed as either xsd:date or xsd:dateTime" .
 
 
 ###  http://www.epos-eu.org/ns/epos#Organisation
-epos:Organisation rdf:type owl:NamedIndividual ,
-                           sh:NodeShape ;
-                  sh:property _:genid7 .
+<http://www.epos-eu.org/ns/epos#Organisation> rdf:type owl:NamedIndividual ,
+                                                       sh:NodeShape ;
+                                              sh:property _:genid7 .
 
 _:genid7 sh:path dct:identifier ;
           sh:severity sh:Violation ;
@@ -1396,10 +1396,10 @@ _:genid7 sh:path dct:identifier ;
 
 
 ###  http://www.epos-eu.org/ns/epos#Person
-epos:Person rdf:type owl:NamedIndividual ,
-                     sh:NodeShape ;
-            sh:property _:genid8 ,
-                        _:genid9 .
+<http://www.epos-eu.org/ns/epos#Person> rdf:type owl:NamedIndividual ,
+                                                 sh:NodeShape ;
+                                        sh:property _:genid8 ,
+                                                    _:genid9 .
 
 _:genid8 sh:path dct:identifier ;
           sh:severity sh:Violation ;
@@ -1932,25 +1932,25 @@ foaf:primaryTopic rdf:type owl:NamedIndividual .
 <mailto:dcat_application_profile@joinup.ec.europa.eu> rdf:type owl:NamedIndividual .
 
 
-[ sh:node :DateOrDateTimeDataType
+[ sh:node epos:DateOrDateTimeDataType
 ] .
 
-[ sh:node :DateOrDateTimeDataType
+[ sh:node epos:DateOrDateTimeDataType
  ] .
 
 [ sh:datatype xsd:dateTime
  ] .
 
-[ sh:node :DateOrDateTimeDataType
+[ sh:node epos:DateOrDateTimeDataType
  ] .
 
 [ sh:datatype xsd:date
  ] .
 
-[ sh:node :DateOrDateTimeDataType
+[ sh:node epos:DateOrDateTimeDataType
  ] .
 
-[ sh:node :DateOrDateTimeDataType
+[ sh:node epos:DateOrDateTimeDataType
  ] .
 
 [ foaf:name "Makx Dekkers"
