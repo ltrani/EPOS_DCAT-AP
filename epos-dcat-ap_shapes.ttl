@@ -47,7 +47,7 @@
   dct:creator [
       foaf:name "Luca Trani" ;
     ] ;
-  dct:modified "2017-09-01"^^xsd:date ;
+  dct:created "2017-09-01"^^xsd:date ;
   dct:relation <https://joinup.ec.europa.eu/node/69559> ;
   dct:title "EPOS DCAT Application Profile"@en  ;
   rdfs:comment "This document specifies the set of RDF classes, properties and shapes used in the EPOS DCAT Application Profile."@en  ;
@@ -155,6 +155,11 @@ epos:Webservice
   # Properties 
   ###
 
+epos:associatedProject
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain epos:Organisation ;
+  rdfs:range epos:Project ;
+.
 epos:affiliation
   rdf:type owl:ObjectProperty ;
   rdfs:domain epos:Person ;
@@ -485,26 +490,128 @@ epos:CatalogRecordShape
 epos:OrganisationShape
   a sh:NodeShape ;
   sh:targetClass epos:Organisation;
+  ####
+  # Mandatory properties
+  ###   
   sh:property [
       sh:path dct:identifier ;
       sh:nodeKind sh:IRIOrLiteral;
       sh:minCount 1 ;
+      sh:maxCount 1 ;      
     ] ;
+    sh:property [
+      sh:path vcard:fn ;
+      sh:datatype xsd:string;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+  ####
+  # Optional properties
+  ###
+    sh:property [
+      sh:path epos:annotation ;
+      sh:nodeKind oa:Annotation;
+    ] ;
+    sh:property [
+      sh:path vcard:hasAddress ;
+      sh:nodeKind vcard:Address;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path vcard:hasLogo ;
+      sh:nodeKind sh:BlankNodeOrIRI;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path vcard:hasURL ;
+      sh:nodeKind sh:BlankNodeOrIRI;
+    ] ;
+    sh:property [
+      sh:path vcard:organization-name ;
+      sh:datatype xsd:string;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path dct:type ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path dct:isPartOf ;
+      sh:nodeKind epos:Organisation;
+    ] ;
+    sh:property [
+      sh:path dct:spatial ;
+      sh:nodeKind dct:Location;
+      sh:maxCount 1 ;
+    ] ; 
+    sh:property [
+      sh:path epos:scientificContact ;
+      sh:nodeKind epos:Person;
+    ] ;
+    sh:property [
+      sh:path epos:legalContact ;
+      sh:nodeKind epos:Person;
+    ] ;
+    sh:property [
+      sh:path epos:financialContact ;
+      sh:nodeKind epos:Person;
+    ] ;   
 .
 
 epos:PersonShape
-  rdf:type sh:NodeShape ;
+  a sh:NodeShape ;
+    sh:targetClass epos:Person;
+  ####
+  # Mandatory properties
+  ###     
   sh:property [
       sh:path dct:identifier ;
       sh:nodeKind sh:IRIOrLiteral;
       sh:minCount 1 ;
+      sh:maxCount 1 ;
     ] ;
+   sh:property [
+      sh:path vcard:fn ;
+      sh:datatype xsd:string;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+  ####
+  # Optional properties
+  ###  
   sh:property [
       sh:path dct:language ;
       sh:nodeKind sh:IRIOrLiteral;
-      sh:minCount 1 ;
     ] ;
+  sh:property [
+      sh:path vcard:hasAddress ;
+      sh:nodeKind vcard:Address;
+      sh:maxCount 1 ;
+    ] ;
+   sh:property [
+      sh:path vcard:hasEmail ;
+      sh:nodeKind vcard:Email;
+    ] ;
+    sh:property [
+      sh:path vcard:hasTelephone ;
+      sh:nodeKind vcard:Phone;
+      sh:maxCount 1 ;
+    ] ;   
+     sh:property [
+      sh:path vcard:hasURL ;
+      sh:nodeKind sh:BlankNodeOrIRI;
+    ] ;
+     sh:property [
+      sh:path epos:affiliation ;
+      sh:nodeKind epos:Organisation;
+    ] ;
+    sh:property [
+      sh:path epos:annotation ;
+      sh:nodeKind oa:Annotation;
+    ] ;   
 .
+
 ###### Review after here
 dcat:Dataset
   rdf:type owl:NamedIndividual ;
