@@ -17,7 +17,21 @@
 				vcard:postal-code "3731GA";
 				vcard:country-name "The Netherlands";
 			];
+			epos:affiliation <#KNMI>;
 			.
+<#KNMI> a epos:Organisation;
+			dct:identifier "PICidentifier"^^dct:URI;
+			vcard:fn "Royal Netherlands Meteorological Institute";
+			vcard:organization-name ""
+			vcard:hasAddress [
+				vcard:hasStreetAddress "Utrechtseweg 297";
+				vcard:locality "De Bilt";
+				vcard:postal-code "3731GA";
+				vcard:country-name "Netherlands";
+			];
+			.
+
+
 <#INGV> a epos:Organisation;
 			dct:identifier "PICidentifier"^^dct:URI;
 			vcard:fn "INGV National Institute of Geophysics e Volcanology";
