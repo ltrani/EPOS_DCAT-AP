@@ -38,6 +38,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix wot: <http://xmlns.com/wot/0.1/> .
 #@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
@@ -146,11 +147,16 @@ epos:Software
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
   rdfs:subClassOf schema:SoftwareApplication ;
 .
-epos:Webservice
+epos:WebService
   rdf:type owl:Class ;
+  rdfs:subClassOf hydra:ApiDocumentation;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
 .
-
+epos:Operation
+  rdf:type owl:Class ;
+  rdfs:subClassOf hydra:Operation;
+  rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+.
   ####
   # Properties 
   ###
@@ -247,7 +253,16 @@ epos:scientificContact
   rdfs:domain epos:Organisation ;
   rdfs:range epos:Person ;
 .
-
+epos:supportedOperation  
+  rdf:type owl:ObjectProperty;
+  rdfs:domain epos:WebService ;
+  rdfs:range epos:Operation ;
+.
+epos:returns  
+  rdf:type owl:ObjectProperty;
+  rdfs:domain epos:Operation ;
+  rdfs:range epos:Distribution ;
+.
 
   ####
   # Shapes 
