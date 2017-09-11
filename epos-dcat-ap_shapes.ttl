@@ -103,11 +103,11 @@ epos:ModelCode
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
   rdfs:subClassOf schema:SoftwareSourceCode ;
 .
-epos:Operation
-  a owl:Class ;
-  rdfs:comment "EPOS Operation"@en  ;
-  rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
-.
+#epos:Operation
+ # a owl:Class ;
+  #rdfs:comment "EPOS Operation"@en  ;
+  #rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+#.
 epos:Organisation
   a owl:Class ;
   rdfs:comment "EPOS Organisation"@en  ;
@@ -525,11 +525,11 @@ epos:OrganisationShape
   ###
     sh:property [
       sh:path epos:annotation ;
-      sh:nodeKind oa:Annotation;
+      sh:class oa:Annotation;
     ] ;
     sh:property [
       sh:path vcard:hasAddress ;
-      sh:nodeKind vcard:Address;
+      sh:class vcard:Address;
       sh:maxCount 1 ;
     ] ;
     sh:property [
@@ -553,24 +553,24 @@ epos:OrganisationShape
     ] ;
     sh:property [
       sh:path dct:isPartOf ;
-      sh:nodeKind epos:Organisation;
+      sh:class epos:Organisation;
     ] ;
     sh:property [
       sh:path dct:spatial ;
-      sh:nodeKind dct:Location;
+      sh:class dct:Location;
       sh:maxCount 1 ;
     ] ; 
     sh:property [
       sh:path epos:scientificContact ;
-      sh:nodeKind epos:Person;
+      sh:class epos:Person;
     ] ;
     sh:property [
       sh:path epos:legalContact ;
-      sh:nodeKind epos:Person;
+      sh:class epos:Person;
     ] ;
     sh:property [
       sh:path epos:financialContact ;
-      sh:nodeKind epos:Person;
+      sh:class epos:Person;
     ] ;   
 .
 
@@ -606,11 +606,11 @@ epos:PersonShape
     ] ;
    sh:property [
       sh:path vcard:hasEmail ;
-      sh:nodeKind vcard:Email;
+      sh:class vcard:Email;
     ] ;
     sh:property [
       sh:path vcard:hasTelephone ;
-      sh:nodeKind vcard:Phone;
+      sh:class vcard:Phone;
       sh:maxCount 1 ;
     ] ;   
      sh:property [
@@ -619,11 +619,11 @@ epos:PersonShape
     ] ;
      sh:property [
       sh:path epos:affiliation ;
-      sh:nodeKind epos:Organisation;
+      sh:class epos:Organisation;
     ] ;
     sh:property [
       sh:path epos:annotation ;
-      sh:nodeKind oa:Annotation;
+      sh:class oa:Annotation;
     ] ;   
 .
 

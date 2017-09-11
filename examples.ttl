@@ -1,9 +1,10 @@
 @base <www.orfeus-eu.org> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix epos: <http://www.epos-eu.org/epos/dcat-ap> .
+@prefix epos: <http://www.epos-eu.org/epos/dcat-ap#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
 
 ### Name defined in an external namespace i.e. orfeus
 <#LucaTrani> a epos:Person;
@@ -11,7 +12,7 @@
 			dc:language [ rdf:value "it"^^dct:RFC4646 ] ;
 			vcard:fn "Luca Trani";
 			vcard:hasEmail "trani@knmi.nl";
-			vcard:hasAddress [
+			vcard:hasAddress [ a vcard:Address;
 				vcard:hasStreetAddress "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
@@ -19,11 +20,13 @@
 			];
 			epos:affiliation <#KNMI>;
 			.
+
+
 <#KNMI> a epos:Organisation;
 			dct:identifier "PICidentifier"^^dct:URI;
 			vcard:fn "Royal Netherlands Meteorological Institute";
-			vcard:organization-name ""
-			vcard:hasAddress [
+			vcard:organization-name "";
+			vcard:hasAddress [ a vcard:Address;
 				vcard:hasStreetAddress "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
@@ -31,12 +34,25 @@
 			];
 			.
 
-
+<#FDSN/ODC/Dataselect> a epos:WebService;
+				dct:identifier "uniqueServiceID"^^dct:URI;
+				hydra:title "FDSN Dataselect WebService at the Orfeus Data Centre";
+				dct:description "The FDSN Dataselect WebService provides access to Seismological time series data.";
+				dct:issued "2017-01-01"^^xsd:date;
+				dct:modified "2017-09-01"^^xsd:date;
+				hydra:entrypoint "http://www.orfeus-eu.org/fdsnws/dataselect/1/";
+				epos:supportedOperation [ a  epos:Operation;
+					dct:identifier "http://www.orfeus-eu.org/fdsnws/dataselect/1/query?";
+					hydra:method "GET";
+					hydra:expects "";   
+				
+				];
+				.
 <#INGV> a epos:Organisation;
 			dct:identifier "PICidentifier"^^dct:URI;
 			vcard:fn "INGV National Institute of Geophysics e Volcanology";
-			vcard:organization-name ""
-			vcard:hasAddress [
+			vcard:organization-name "";
+			vcard:hasAddress [ a vcard:Address;
 				vcard:hasStreetAddress "Via di Vigna Murata 605";
 				vcard:locality "Rome";
 				vcard:postal-code "00143";
