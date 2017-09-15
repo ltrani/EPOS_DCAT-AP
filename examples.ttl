@@ -26,7 +26,7 @@
 			dct:identifier "PICidentifier"^^dct:URI;
 			vcard:fn "Royal Netherlands Meteorological Institute";
 			vcard:organization-name "";
-			vcard:hasAddress [ a vcard:Address;
+			vcard:hasAddress [ rdf:type vcard:Address;
 				vcard:hasStreetAddress "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";

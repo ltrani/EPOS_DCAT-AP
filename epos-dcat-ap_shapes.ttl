@@ -58,7 +58,7 @@
   owl:imports <http://www.w3.org/2004/02/skos/core> ;
   owl:imports <http://www.w3.org/2006/vcard/ns> ;
   owl:imports <http://www.w3.org/2008/05/skos-xl> ;
-  owl:imports <http://www.w3.org/ns/adms> ;
+ # owl:imports <http://www.w3.org/ns/adms> ;
   owl:imports <http://www.w3.org/ns/dcat> ;
   owl:imports <http://www.w3.org/ns/oa#> ;
   owl:imports org: ;
@@ -263,6 +263,8 @@ epos:returns
   rdfs:domain epos:Operation ;
   rdfs:range epos:Distribution ;
 .
+
+
 
   ####
   # Shapes 
@@ -601,7 +603,7 @@ epos:PersonShape
     ] ;
   sh:property [
       sh:path vcard:hasAddress ;
-      sh:nodeKind vcard:Address;
+      sh:class vcard:Address;
       sh:maxCount 1 ;
     ] ;
    sh:property [
