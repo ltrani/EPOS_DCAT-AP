@@ -541,7 +541,7 @@ epos:OrganisationShape
     ] ;
     sh:property [
       sh:path vcard:hasURL ;
-      sh:nodeKind sh:BlankNodeOrIRI;
+      sh:nodeKind sh:BlankNodeOrLiteral;
     ] ;
     sh:property [
       sh:path vcard:organization-name ;
@@ -617,7 +617,7 @@ epos:PersonShape
     ] ;   
      sh:property [
       sh:path vcard:hasURL ;
-      sh:nodeKind sh:BlankNodeOrIRI;
+      sh:nodeKind sh:BlankNodeOrLiteral;
     ] ;
      sh:property [
       sh:path epos:affiliation ;
