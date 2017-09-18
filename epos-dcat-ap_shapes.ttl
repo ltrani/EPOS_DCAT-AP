@@ -72,7 +72,7 @@
 
 epos:Dataset
   a owl:Class ;
-  rdfs:comment "This is the EPOS specialisation of dcat:Dataset"@en  ;
+  rdfs:comment "EPOS specialisation of dcat:Dataset"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap/> ;
   rdfs:label "Dataset"@en  ;
   rdfs:subClassOf dcat:Dataset ;
@@ -80,27 +80,30 @@ epos:Dataset
 
 epos:Distribution
   a owl:Class ;
-  rdfs:comment "EPOS Distribution"@en  ;
+  rdfs:comment "EPOS specialisation of dcat:Distribution"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Distribution"@en  ;
   rdfs:subClassOf dcat:Distribution ;
 .
 epos:Equipment
   a owl:Class ;
-  rdfs:comment "Represent a generic equipment e.g. gps sensor, seismic stream"@en  ;
+  rdfs:comment "A resource representing a generic equipment. E.g. gps sensor, seismic station's channel"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Equipment"@en  ;
   rdfs:subClassOf rdfs:Resource ;
 .
 epos:Facility
   a owl:Class ;
-  rdfs:comment "EPOS Facility"@en  ;
+  rdfs:comment "A resource representing a Facility. E.g. seismic station"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
   rdfs:label "Facility"@en  ;
   rdfs:subClassOf rdfs:Resource ;
 .
 epos:ModelCode
   a owl:Class ;
-  rdfs:comment "EPOS ModelCode"@en  ;
+  rdfs:comment "EPOS specialisation of schema:SoftwareSourceCode"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "ModelCode"@en  ;
   rdfs:subClassOf schema:SoftwareSourceCode ;
 .
 #epos:Operation
@@ -110,51 +113,66 @@ epos:ModelCode
 #.
 epos:Organisation
   a owl:Class ;
-  rdfs:comment "EPOS Organisation"@en  ;
+  rdfs:comment "EPOS specialisation of vcard:Organisation"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Organisation"@en  ; 
   rdfs:subClassOf vcard:Organization ;
 .
 
 epos:CatalogRecord
   a owl:Class ;
+  rdfs:comment "EPOS specialisation of dcat:CatalogRecord"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "CatalogRecord"@en  ;   
   rdfs:subClassOf dcat:CatalogRecord ;
 .
 epos:Person
-  rdf:type owl:Class ;
+  a owl:Class ;
+  rdfs:comment "EPOS specialisation of vcard:Person"@en  ;  
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Person"@en  ;   
   rdfs:subClassOf vcard:Individual ;
 .
 epos:Project
-  rdf:type owl:Class ;
+  a owl:Class ;
+  rdfs:comment "EPOS specialisation of foaf:Project"@en  ;  
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Project"@en  ;    
   rdfs:subClassOf foaf:Project ;
 .
 epos:Publication
-  rdf:type owl:Class ;
+  a owl:Class ;
+  rdfs:comment "EPOS specialisation of foaf:Document"@en  ;    
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Publication"@en  ;   
   rdfs:subClassOf foaf:Document ;
 .
 epos:Service
-  rdf:type owl:Class ;
-  rdfs:comment "EPOS service"@en  ;
+  a owl:Class ;
+  rdfs:comment "EPOS specialisation of schema:Service"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Service"@en  ;   
   rdfs:subClassOf schema:Service ;
 .
 epos:Software
-  rdf:type owl:Class ;
-  rdfs:comment "EPOS Software"@en  ;
+  a owl:Class ;
+  rdfs:comment "EPOS specialisation of schema:SoftwareApplication"@en  ;
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  rdfs:label "Software"@en  ;   
   rdfs:subClassOf schema:SoftwareApplication ;
 .
 epos:WebService
-  rdf:type owl:Class ;
+  a owl:Class ;
+  rdfs:comment "It represents a WebService API "@en  ;  
   rdfs:subClassOf hydra:ApiDocumentation;
+  rdfs:label "WebService"@en  ;     
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
 .
 epos:Operation
-  rdf:type owl:Class ;
+  a owl:Class ;
+  rdfs:comment "It represents an operation enabled by a WebService, i.e. API Method "@en  ;    
   rdfs:subClassOf hydra:Operation;
+  rdfs:label "Operation"@en  ;       
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
 .
   ####
