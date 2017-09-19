@@ -204,17 +204,19 @@ epos:contributor
   rdfs:domain epos:Publication ;
   rdfs:range epos:Person ;
 .
-epos:domain
-  rdf:type owl:DatatypeProperty ;
-  rdfs:comment "This property refers to the domain of resource (e.g. Seismology, Geodesy, Satellite data, Geomagnetic data, Geology, Geohazards, Georesources, Transnational access)"@en  ;
+epos:theme
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "The main category/domain of the referred resource. It is an extension of dcat:theme"@en  ;
   rdfs:domain epos:Dataset ;
   rdfs:domain epos:Distribution ;
-  rdfs:range rdfs:Literal ;
+  rdfs:domain epos:Facility ;
+  rdfs:range skos:Concept ;
 .
 epos:dynamicRange
-  rdf:type owl:ObjectProperty ;
+  rdf:type owl:DatatypeProperty ;
   rdfs:comment "This property contains the full scale measuring ability, in nT (unit and value)"@en  ;
   rdfs:domain epos:Equipment ;
+  rdfs:range rdfs:Literal ;
 .
 epos:filter
   rdf:type owl:DatatypeProperty ;
@@ -222,8 +224,27 @@ epos:filter
   rdfs:domain epos:Equipment ;
   rdfs:range rdfs:Literal ;
 .
+epos:samplePeriod
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "This property contains the sample period in mS"@en  ;
+  rdfs:domain epos:Equipment ;
+  rdfs:range rdfs:Literal ;
+.
+epos:contactPoint
+  rdf:type owl:ObjectProperty ;
+  rdfs:comment "This property describes a generic contact point for the specified resource"@en  ;
+  rdfs:domain epos:Organisation ;
+  rdfs:domain epos:Equipment ;
+  rdfs:domain epos:CatalogRecord ;
+  rdfs:domain epos:Software ;
+  rdfs:domain epos:Distribution ;
+  rdfs:domain epos:Facility ;
+  rdfs:range epos:Person ;
+.
+
 epos:financialContact
   rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf epos:contactPoint;
   rdfs:domain epos:Organisation ;
   rdfs:range epos:Person ;
 .
@@ -310,13 +331,13 @@ epos:CatalogShape
   ###
   sh:property [
       sh:path dct:title ;
-      sh:datatype sh:Literal ;
+      sh:nodeKind sh:Literal ;
       sh:minCount 1 ;
     ] ;
   sh:property [
       sh:path dct:description ;
       sh:minCount 1 ;
-      sh:datatype sh:Literal ;
+      sh:nodeKind sh:Literal ;
     ] ;
    sh:property [
       sh:path dct:publisher ;
@@ -647,10 +668,217 @@ epos:PersonShape
     ] ;   
 .
 
+
+epos:EquipmentShape 
+  a sh:NodeShape ;
+  sh:targetClass epos:Equipment;
+  ####
+  # Mandatory properties
+  ###       
+  sh:property [
+      sh:path dct:description ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;  
+  sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+   sh:property [
+      sh:path dct:title ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;    
+  
+  ####
+  # Recommended properties
+  ###
+   sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Type is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:type ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;  
+    sh:property [
+      sh:path schema:manufacturer ;
+      sh:class epos:Organisation;
+    ] ;
+   sh:property [
+      sh:path schema:manufacturer ;
+      sh:class epos:Organisation;
+      sh:minCount 1; 
+      sh:message "Manufacturer is recommended. Please fill in a value"@en  ; 
+      sh:severity sh:Warning ;                
+    ] ;  
+   sh:property [
+      sh:path schema:serialNumber ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+      sh:maxCount 1 ;
+    ] ; 
+   sh:property [
+      sh:path schema:serialNumber ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+      sh:minCount 1; 
+      sh:message "SerialNumber is recommended. Please fill in a value"@en  ;
+      sh:severity sh:Warning ;           
+    ] ; 
+          
+  ####
+  # Optional properties
+  ###
+
+  sh:property [
+      sh:path dct:isPartOf ;
+      sh:class epos:Organisation;
+    ] ;
+  sh:property [
+      sh:path dct:isPartOf ;
+      sh:class epos:Facility;
+    ] ;  
+  sh:property [
+      sh:path epos:filter ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+    ] ;
+  sh:property [
+      sh:path epos:dynamicRange ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+    ] ;        
+  sh:property [
+      sh:path epos:orientation ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+    ] ;   
+ sh:property [
+      sh:path epos:resolution ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+    ] ;   
+ sh:property [
+      sh:path epos:samplePeriod ;
+      sh:nodeKind sh:BlankNodeOrLiteral;
+    ] ;   
+    
+ sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;           
+ sh:property [
+      sh:path epos:owner ;
+      sh:class epos:Organisation;
+    ] ;           
+ sh:property [
+      sh:path dct:spatial ;
+      sh:class dct:Location;
+    ] ; 
+  sh:property [
+      sh:path epos:annotation ;
+      sh:class oa:Annotation;
+    ] ;              
+.            
+
+epos:FacilityShape 
+  a sh:NodeShape ;
+  sh:targetClass epos:Facility;
+  ####
+  # Mandatory properties
+  ###       
+  sh:property [
+      sh:path dct:description ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;  
+  sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+   sh:property [
+      sh:path dct:title ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ; 
+  ####
+  # Recommended properties
+  ###       
+  sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Type is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:type ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;
+   sh:property [
+      sh:path epos:theme ;
+      sh:minCount 1 ;
+      sh:class skos:Concept;
+      sh:message "Theme is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;  
+   sh:property [
+      sh:path epos:theme ;
+      sh:class skos:Concept;
+    ] ;            
+  ####
+  # Optional properties
+  ###       
+   sh:property [
+      sh:path vcard:hasAddress ;
+      sh:class vcard:Address;
+      sh:maxCount 1 ;
+    ] ;  
+   sh:property [
+      sh:path foaf:page ;
+      sh:class foaf:Document;
+      sh:maxCount 1 ;
+    ] ;  
+   sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:manager ;
+      sh:class epos:Person;
+    ] ;                
+   sh:property [
+      sh:path epos:owner ;
+      sh:class epos:Organisation;
+    ] ;           
+  sh:property [
+      sh:path epos:annotation ;
+      sh:class oa:Annotation;
+    ] ;              
+.            
+      
 ###### Review after here
-dcat:Dataset
-  rdf:type owl:NamedIndividual ;
-  rdf:type sh:NodeShape ;
+
+epos:DatasetShape 
+  a sh:NodeShape ;
+  sh:targetClass epos:Dataset;
+  
+  sh:property [
+      sh:path cnt:characterEncoding ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+      sh:message "Encoding is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+  sh:property [
+      sh:path cnt:characterEncoding ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:Literal ;
+      ] ; 
   sh:property [
       sh:path dct:accessRights ;
       sh:class dct:RightsStatement ;
