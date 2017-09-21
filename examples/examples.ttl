@@ -13,7 +13,7 @@
 			vcard:fn "Luca Trani";
 			vcard:hasEmail "trani@knmi.nl";
 			vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "Utrechtseweg 297";
+				vcard:street-address "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
 				vcard:country-name "The Netherlands";
@@ -27,7 +27,7 @@
 			vcard:fn "Royal Netherlands Meteorological Institute";
 			vcard:organization-name "";
 			vcard:hasAddress [ rdf:type vcard:Address;
-				vcard:hasStreetAddress "Utrechtseweg 297";
+				vcard:street-address "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
 				vcard:country-name "Netherlands";
@@ -36,28 +36,44 @@
 
 <#FDSN/ODC/Dataselect> a epos:WebService;
 				dct:identifier "uniqueServiceID"^^dct:URI;
-				hydra:title "FDSN Dataselect WebService at the Orfeus Data Centre";
+				dct:title "FDSN Dataselect WebService at the Orfeus Data Centre";
 				dct:description "The FDSN Dataselect WebService provides access to Seismological time series data.";
 				dct:issued "2017-01-01"^^xsd:date;
 				dct:modified "2017-09-01"^^xsd:date;
 				hydra:entrypoint "http://www.orfeus-eu.org/fdsnws/dataselect/1/";
-				epos:supportedOperation [ a  epos:Operation;
-					dct:identifier "http://www.orfeus-eu.org/fdsnws/dataselect/1/query?";
-					hydra:method "GET";
-					hydra:expects "";   
-				
-				];
+				epos:supportedOperation <#FDSN/ODC/Dataselect/query>;
 				.
-<#INGV> a epos:Organisation;
-			dct:identifier "PICidentifier"^^dct:URI;
-			vcard:fn "INGV National Institute of Geophysics e Volcanology";
-			vcard:organization-name "";
-			vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "Via di Vigna Murata 605";
-				vcard:locality "Rome";
-				vcard:postal-code "00143";
-				vcard:country-name "Italy";
-			];
-			.
+<#FDSN/ODC/Dataselect/query>  a epos:Operation; 
+               hydra:method "GET"^^xsd:string;
+               hydra:IriTemplate[ a hydra:Rfc6570Template; 
+               hydra:template "http://www.orfeus-eu.org/fdsnws/dataselect/1/query/(?start,end,net,sta,cha)"^^xsd:string;
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "start"^^xsd:string;
+               	hydra:required "true"^^xsd:string;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "start"^^xsd:string;
+               	hydra:required "true"^^xsd:string;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "end"^^xsd:string;
+               	hydra:required "true"^^xsd:string;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "net"^^xsd:string;
+               	hydra:required "false"^^xsd:string;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "sta"^^xsd:string;
+               	hydra:required "false"^^xsd:string;
+               ];
+                hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "cha"^^xsd:string;
+               	hydra:required "false"^^xsd:string;
+               ];
+               ];
+               .
+
+			
 			
 			

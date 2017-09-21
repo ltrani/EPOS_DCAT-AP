@@ -977,17 +977,6 @@ epos:OperationShape
   # Mandatory properties
   ###       
   sh:property [
-      sh:path dct:identifier ;
-      sh:nodeKind sh:IRIOrLiteral;
-      sh:minCount 1 ;
-      sh:maxCount 1 ;
-    ] ;
-  sh:property [
-      sh:path hydra:expects ;
-      sh:minCount 1 ;
-      sh:class hydra:Class ;
-    ] ;  
-  sh:property [
       sh:path hydra:method ;
       sh:minCount 1 ;
       sh:datatype xsd:string ;
@@ -996,19 +985,23 @@ epos:OperationShape
   # Recommended properties
   ###       
   sh:property [
-      sh:path hydra:template ;
+      sh:path hydra:IriTemplate ;
       sh:minCount 1 ;
-      sh:datatype xsd:string ;
-      sh:message "Modified template is recommended. Please fill in a value"@en  ;      
+      sh:nodeKind hydra:IriTemplate ;
+      sh:message "IRI template is recommended. Please fill in a value"@en  ;      
       sh:severity sh:Warning ;  
     ] ;
   sh:property [
-      sh:path hydra:template ;
-      sh:datatype xsd:string ;
+      sh:path hydra:IriTemplate ;
+      sh:nodeKind hydra:IriTemplate ;
     ] ;        
   ####
   # Optional properties
-  ###       
+  ### 
+  sh:property [
+      sh:path hydra:expects ;
+      sh:class hydra:Class ;
+    ] ;        
   sh:property [
       sh:path hydra:statusCode ;
       sh:datatype xsd:integer ;
@@ -1017,6 +1010,10 @@ epos:OperationShape
       sh:path epos:implements ;
       sh:class epos:Distribution ;
     ] ;
+  sh:property [
+      sh:path hydra:returns ;
+      sh:class hydra:Class ;
+    ] ;  
 .    
 
           
