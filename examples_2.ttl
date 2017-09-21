@@ -55,7 +55,7 @@
 			vcard:fn "INGV National Institute of Geophysics e Volcanology";
 			vcard:organization-name "";
 			vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "Via di Vigna Murata 605";
+				vcard:street-address "Via di Vigna Murata 605";
 				vcard:locality "Rome";
 				vcard:postal-code "00143";
 				vcard:country-name "Italy";
@@ -72,7 +72,7 @@
 			vcard:hasEmail [a vcard:Email;
                                         rdf:value "smf@bgs.ac.uk"] ;
                         vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "The Lyell Centre, Research Avenue South";
+				vcard:street-address "The Lyell Centre, Research Avenue South";
 				vcard:locality "Edinburgh";
 				vcard:postal-code "EH14 4AP";
 				vcard:country-name "UK";
@@ -90,7 +90,7 @@
 			vcard:hasEmail [a vcard:Email;
                                         rdf:value "chto@bgs.ac.uk"] ;
                         vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "Nicker Hill, Keyworth";
+				vcard:street-address "Nicker Hill, Keyworth";
 				vcard:locality "Nottingham";
 				vcard:postal-code "NG12 5GG";
 				vcard:country-name "UK";
@@ -107,7 +107,7 @@
 			vcard:hasEmail [a vcard:Email;
                                         rdf:value "aclewes@bgs.ac.uk"] ;
                         vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "Nicker Hill, Keyworth";
+				vcard:street-address "Nicker Hill, Keyworth";
 				vcard:locality "Nottingham";
 				vcard:postal-code "NG12 5GG";
 				vcard:country-name "UK";
@@ -125,7 +125,7 @@
 			vcard:fn "British Geological Survey";
 			vcard:organization-name "";
 			vcard:hasAddress [ a vcard:Address;
-				vcard:hasStreetAddress "The Lyell Centre, Research Avenue South";
+				vcard:street-address "The Lyell Centre, Research Avenue South";
 				vcard:locality "Edinburgh";
 				vcard:postal-code "EH14 4AP";
 				vcard:country-name "UK";
