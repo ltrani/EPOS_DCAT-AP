@@ -1628,3 +1628,55 @@ epos:PublicationShape
       sh:nodeKind sh:BlankNodeOrLiteral ;
     ] ;      
 .
+epos:SoftwareShape
+  a sh:NodeShape ;
+  sh:targetClass epos:Software;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+    ] ;
+     ####
+  # Recommended properties
+  ### 
+  sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Contact point is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ; 
+.    
+epos:ModelCodeShape
+  a sh:NodeShape ;
+  sh:targetClass epos:ModelCode;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+    ] ;
+     ####
+  # Recommended properties
+  ### 
+  sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Contact point is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ; 
+.  
