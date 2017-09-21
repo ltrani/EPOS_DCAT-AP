@@ -238,6 +238,7 @@ epos:contactPoint
   rdfs:domain epos:CatalogRecord ;
   rdfs:domain epos:Software ;
   rdfs:domain epos:WebService ;
+  rdfs:domain epos:Project ;
   rdfs:domain epos:Facility ;
   rdfs:range epos:Person ;
 .
@@ -267,14 +268,14 @@ epos:orientation
 epos:owner
   rdf:type owl:ObjectProperty ;
   rdfs:domain epos:Equipment ;
-  rdfs:domain epos:Publication ;
+  rdfs:domain epos:Facility ;
   rdfs:range epos:Organisation ;
   rdfs:range epos:Person ;
 .
 epos:publisher
   rdf:type owl:ObjectProperty ;
   rdfs:domain epos:Publication ;
-  rdfs:range epos:Person ;
+  rdfs:range vcard:Kind ;
 .
 epos:resolution
   rdf:type owl:DatatypeProperty ;
@@ -282,10 +283,18 @@ epos:resolution
   rdfs:domain epos:Equipment ;
   rdfs:range rdfs:Literal ;
 .
+
+epos:keyword
+  rdf:type owl:DatatypeProperty ;
+  rdfs:comment "This property represents one or more keywords "@en  ;
+  rdfs:domain epos:Publication ;
+  rdfs:range rdfs:Literal ;
+.
 epos:responsibleParty
   rdf:type owl:ObjectProperty ;
   rdfs:domain epos:Dataset ;
   rdfs:domain epos:WebService ;
+  rdfs:domain epos:Project ;
   rdfs:range epos:Person ;
   rdfs:range epos:Organisation ;
   
@@ -1391,10 +1400,231 @@ epos:DistributionShape
   sh:property [
       sh:path epos:theme ;
       sh:class skos:Concept;
+    ] ;        
+.
+epos:ServiceShape
+  a sh:NodeShape ;
+  sh:targetClass epos:Service;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path dct:title ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+  sh:property [
+      sh:path dct:license ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:class dct:LicenseDocument ;
     ] ;  
-         
+  ####
+  # Recommended properties
+  ### 
+  sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Contact point is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ;  
+ sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Type is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:type ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ; 
+   sh:property [
+      sh:path dct:description ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Description is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:description ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ; 
 .
 
+epos:ProjectShape
+  a sh:NodeShape ;
+  sh:targetClass epos:Project;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path dct:title ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+  ####
+  # Recommended properties
+  ### 
+  sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Contact point is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ;  
+   sh:property [
+      sh:path dct:description ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Description is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:description ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;
+    sh:property [
+      sh:path epos:responsibleParty ;
+      sh:class epos:Organisation ;
+      sh:maxCount 1;
+    ] ;
+  sh:property [
+    sh:path epos:responsibleParty ;
+      sh:class epos:Organisation ;
+      sh:minCount 1;
+      sh:message "Responsible party is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;     
+.
 
-
-
+epos:PublicationShape
+  a sh:NodeShape ;
+  sh:targetClass epos:Publication;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path dct:title ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal ;
+    ] ;
+  ####
+  # Recommended properties
+  ### 
+  sh:property [
+      sh:path dct:issued ;
+      sh:minCount 1 ;
+      sh:node epos:DateOrDateTimeDataType ;
+      sh:message "Issued date is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ; 
+	sh:property [
+      sh:path dct:issued ;
+      sh:maxCount 1;
+      sh:node epos:DateOrDateTimeDataType ;
+    ] ;   
+  sh:property [
+      sh:path epos:publisher ;
+      sh:class vcard:Kind;
+    ] ;
+   sh:property [
+      sh:path epos:publisher ;
+      sh:class vcard:Kind;
+      sh:minCount 1 ;
+      sh:message "Publisher is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ; 
+     sh:property [
+      sh:path dct:abstract ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Abstract is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;
+   sh:property [
+      sh:path dct:abstract ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ; 
+   sh:property [
+      sh:path epos:author ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:author ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Author is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ; 
+    sh:property [
+      sh:path epos:contributor ;
+      sh:class epos:Person;
+    ] ;
+   sh:property [
+      sh:path epos:contributor ;
+      sh:class epos:Person;
+      sh:minCount 1 ;
+      sh:message "Contributor is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;  
+    ] ; 
+  ####
+  # Optional properties
+  ### 
+  sh:property [
+      sh:path dct:accessRights ;
+      sh:class dct:RightsStatement ;
+      sh:maxCount 1 ;
+    ] ; 
+  sh:property [
+      sh:path dct:format ;
+      sh:class dct:MediaTypeOrExtent ;
+      sh:maxCount 1 ;
+    ] ;  
+  sh:property [
+      sh:path epos:keyword ;
+      sh:nodeKind sh:BlankNodeOrLiteral ;
+    ] ;  
+  sh:property [
+      sh:path schema:issn ;
+      sh:nodeKind sh:BlankNodeOrLiteral ;
+    ] ;         
+  sh:property [
+      sh:path schema:numberOfPages ;
+      sh:nodeKind sh:BlankNodeOrLiteral ;
+    ] ;
+   sh:property [
+      sh:path schema:volumeNumber ;
+      sh:nodeKind sh:BlankNodeOrLiteral ;
+    ] ;      
+.
