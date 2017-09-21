@@ -5,18 +5,20 @@
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 ### Name defined in an external namespace i.e. orfeus
 <#LucaTrani> a epos:Person;
 			dct:identifier "myidentifier"^^dct:URI;
 			dc:language [ rdf:value "it"^^dct:RFC4646 ] ;
 			vcard:fn "Luca Trani";
-			vcard:hasEmail "trani@knmi.nl";
-			vcard:hasAddress [ a vcard:Address;
+			vcard:hasEmail [a vcard:Email;
+                                        rdf:value "trani@knmi.nl"] ;
+                        vcard:hasAddress [ a vcard:Address;
 				vcard:street-address "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
-				vcard:country-name "The Netherlands";
+				vcard:country-name "Netherlands";
 			];
 			epos:affiliation <#KNMI>;
 			.
@@ -26,7 +28,7 @@
 			dct:identifier "PICidentifier"^^dct:URI;
 			vcard:fn "Royal Netherlands Meteorological Institute";
 			vcard:organization-name "";
-			vcard:hasAddress [ rdf:type vcard:Address;
+			vcard:hasAddress [ a vcard:Address;
 				vcard:street-address "Utrechtseweg 297";
 				vcard:locality "De Bilt";
 				vcard:postal-code "3731GA";
