@@ -898,7 +898,7 @@ epos:WebServiceShape
   sh:property [
       sh:path hydra:entrypoint ;
       sh:minCount 1 ;
-      sh:class hydra:Resource ;
+      sh:nodeKind sh:Literal ;
     ] ;   
   ####
   # Recommended properties
@@ -987,13 +987,13 @@ epos:OperationShape
   sh:property [
       sh:path hydra:IriTemplate ;
       sh:minCount 1 ;
-      sh:nodeKind hydra:IriTemplate ;
+      sh:class hydra:IriTemplate ;
       sh:message "IRI template is recommended. Please fill in a value"@en  ;      
       sh:severity sh:Warning ;  
     ] ;
   sh:property [
       sh:path hydra:IriTemplate ;
-      sh:nodeKind hydra:IriTemplate ;
+      sh:class hydra:IriTemplate ;
     ] ;        
   ####
   # Optional properties

@@ -42,7 +42,7 @@
 				dct:description "The FDSN Dataselect WebService provides access to Seismological time series data.";
 				dct:issued "2017-01-01"^^xsd:date;
 				dct:modified "2017-09-01"^^xsd:date;
-				hydra:entrypoint "http://www.orfeus-eu.org/fdsnws/dataselect/1/";
+				hydra:entrypoint "http://www.orfeus-eu.org/fdsnws/dataselect/1/"^^xsd:string;
 				epos:supportedOperation <#FDSN/ODC/Dataselect/query>;
 				.
 <#FDSN/ODC/Dataselect/query>  a epos:Operation; 
