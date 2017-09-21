@@ -237,7 +237,7 @@ epos:contactPoint
   rdfs:domain epos:Equipment ;
   rdfs:domain epos:CatalogRecord ;
   rdfs:domain epos:Software ;
-  rdfs:domain epos:Distribution ;
+  rdfs:domain epos:WebService ;
   rdfs:domain epos:Facility ;
   rdfs:range epos:Person ;
 .
@@ -285,7 +285,10 @@ epos:resolution
 epos:responsibleParty
   rdf:type owl:ObjectProperty ;
   rdfs:domain epos:Dataset ;
+  rdfs:domain epos:WebService ;
   rdfs:range epos:Person ;
+  rdfs:range epos:Organisation ;
+  
 .
 epos:scientificContact
   rdf:type owl:ObjectProperty ;
@@ -528,8 +531,8 @@ epos:CatalogRecordShape
       sh:class dct:LinguisticSystem ;
     ] ;
    sh:property [
-      sh:path dcat:contactPoint ;
-      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:path epos:contactPoint ;
+      sh:class epos:Person ;
     ] ;  
   sh:property [
       sh:path dct:source ;
@@ -891,6 +894,18 @@ epos:WebServiceShape
   ####
   # Recommended properties
   ###  
+   sh:property [
+      sh:path epos:responsibleParty ;
+      sh:class epos:Organisation ;
+      sh:maxCount 1;
+    ] ;
+  sh:property [
+    sh:path epos:responsibleParty ;
+      sh:class epos:Organisation ;
+      sh:minCount 1;
+      sh:message "Responsible party is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;   
   sh:property [
       sh:path hydra:supportedOperation ;
       sh:class epos:Operation ;
@@ -931,7 +946,19 @@ epos:WebServiceShape
   sh:property [
       sh:path hydra:statusCode ;
       sh:datatype xsd:integer ;
-    ] ;            
+    ] ;  
+  sh:property [
+      sh:path epos:contactPoint ;
+      sh:class epos:Person;
+    ] ;        
+  sh:property [
+      sh:path dct:spatial ;
+      sh:class dct:Location ;
+    ] ;
+  sh:property [
+      sh:path dct:temporal ;
+      sh:class dct:PeriodOfTime ;
+    ] ;      
 .
 
 epos:OperationShape 
@@ -1216,239 +1243,158 @@ epos:DatasetShape
     ] ;        
 
 .
-###### Review after here
 
-dcat:Distribution
-  rdf:type owl:NamedIndividual ;
-  rdf:type sh:NodeShape ;
+epos:DistributionShape
+  a sh:NodeShape ;
+  sh:targetClass epos:Distribution;
+  ####
+  # Mandatory properties
+  ### 
+   sh:property [
+      sh:path dct:identifier ;
+      sh:nodeKind sh:IRIOrLiteral;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ] ;
+   sh:property [
+      sh:path dcat:accessURL ;
+      sh:class rdfs:Resource ;
+      sh:minCount 1 ;
+    ] ;  
+  ####
+  # Recommended properties
+  ###   
   sh:property [
       sh:path dct:conformsTo ;
       sh:nodeKind sh:BlankNodeOrIRI ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dct:conformsTo ;
       sh:nodeKind sh:BlankNodeOrIRI ;
-      sh:severity sh:Violation ;
+      sh:minCount 1 ;
+      sh:message "Linked schemas (conformsTo) is recommended. Please fill in a value"@en  ; 
+      sh:severity sh:Warning ;     
+    ] ;  
+  sh:property [
+      sh:path dct:created ;
+      sh:minCount 1 ;
+      sh:node epos:DateOrDateTimeDataType ;
+      sh:message "Created date is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ; 
+	sh:property [
+      sh:path dct:created ;
+      sh:maxCount 1;
+      sh:node epos:DateOrDateTimeDataType ;
+    ] ;       
+  sh:property [
+      sh:path dct:type ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Type is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
     ] ;
+   sh:property [
+      sh:path dct:type ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;   
   sh:property [
       sh:path dct:description ;
-      sh:nodeKind sh:Literal ;
-      sh:severity sh:Violation ;
+      sh:minCount 1 ;
+      sh:nodeKind sh:Literal;
+      sh:message "Description is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
     ] ;
-  sh:property [
+   sh:property [
       sh:path dct:description ;
-      sh:nodeKind sh:Literal ;
-      sh:severity sh:Violation ;
-    ] ;
+      sh:nodeKind sh:Literal;
+      sh:maxCount 1 ;
+    ] ;     
   sh:property [
       sh:path dct:format ;
       sh:class dct:MediaTypeOrExtent ;
       sh:maxCount 1 ;
-      sh:nodeKind sh:IRI ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
+    ] ;    
+   sh:property [
       sh:path dct:format ;
       sh:class dct:MediaTypeOrExtent ;
-      sh:maxCount 1 ;
-      sh:nodeKind sh:IRI ;
-      sh:severity sh:Violation ;
-    ] ;
+      sh:minCount 1 ;
+      sh:message "MediaType is recommended. Please fill in a value"@en  ;      
+      sh:severity sh:Warning ;
+    ] ;   
+  ####
+  # Optional properties
+  ### 
+  
   sh:property [
       sh:path dct:issued ;
       sh:maxCount 1 ;
-      sh:node :DateOrDateTimeDataType ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:issued ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
+      sh:node epos:DateOrDateTimeDataType ;
     ] ;
   sh:property [
       sh:path dct:language ;
       sh:class dct:LinguisticSystem ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:language ;
-      sh:class dct:LinguisticSystem ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dct:license ;
       sh:class dct:LicenseDocument ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:license ;
-      sh:class dct:LicenseDocument ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dct:modified ;
       sh:maxCount 1 ;
-      sh:node :DateOrDateTimeDataType ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:modified ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
+      sh:node epos:DateOrDateTimeDataType ;
     ] ;
   sh:property [
       sh:path dct:rights ;
       sh:class dct:RightsStatement ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
-      sh:path dct:rights ;
-      sh:class dct:RightsStatement ;
+      sh:path dct:title ;
+      sh:nodeKind sh:Literal ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:title ;
-      sh:nodeKind sh:Literal ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dct:title ;
-      sh:nodeKind sh:Literal ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path spdx:checksum ;
       sh:class spdx:Checksum ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path spdx:checksum ;
-      sh:class spdx:Checksum ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
+    ] ;  
   sh:property [
       sh:path adms:status ;
       sh:class skos:Concept ;
       sh:maxCount 1 ;
-      sh:nodeKind sh:IRI ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path adms:status ;
-      sh:class skos:Concept ;
-      sh:maxCount 1 ;
-      sh:nodeKind sh:IRI ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dcat:accessURL ;
-      sh:class rdfs:Resource ;
-      sh:minCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dcat:accessURL ;
-      sh:class rdfs:Resource ;
-      sh:minCount 1 ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dcat:byteSize ;
       sh:datatype xsd:decimal ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dcat:byteSize ;
-      sh:datatype xsd:decimal ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dcat:downloadURL ;
       sh:class rdfs:Resource ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dcat:downloadURL ;
-      sh:class rdfs:Resource ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path dcat:mediaType ;
       sh:class dct:MediaTypeOrExtent ;
       sh:maxCount 1 ;
-      sh:severity sh:Violation ;
-    ] ;
-  sh:property [
-      sh:path dcat:mediaType ;
-      sh:class dct:MediaTypeOrExtent ;
-      sh:maxCount 1 ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
       sh:path foaf:page ;
       sh:class foaf:Document ;
-      sh:severity sh:Violation ;
     ] ;
   sh:property [
-      sh:path foaf:page ;
-      sh:class foaf:Document ;
-      sh:severity sh:Violation ;
-    ] ;
+      sh:path epos:annotation ;
+      sh:class oa:Annotation;
+    ] ;  
+  sh:property [
+      sh:path epos:theme ;
+      sh:class skos:Concept;
+    ] ;  
+         
 .
 
-<http://purl.org/dc/aboutdcmi#DCMI>
-  rdf:type owl:NamedIndividual ;
-.
-<http://purl.org/dc/dcam/VocabularyEncodingScheme>
-  rdf:type owl:Class ;
-.
-<http://purl.org/dc/dcmitype/Collection>
-  rdf:type owl:Class ;
-.
-dc:contributor
-  rdf:type owl:AnnotationProperty ;
-.
-dc:coverage
-  rdf:type owl:AnnotationProperty ;
-.
-dc:creator
-  rdf:type owl:AnnotationProperty ;
-.
-dc:format
-  rdf:type owl:AnnotationProperty ;
-.
-dc:identifier
-  rdf:type owl:AnnotationProperty ;
-.
-dc:language
-  rdf:type owl:AnnotationProperty ;
-.
-dc:publisher
-  rdf:type owl:AnnotationProperty ;
-.
-dc:relation
-  rdf:type owl:AnnotationProperty ;
-.
-dc:rights
-  rdf:type owl:AnnotationProperty ;
-.
-dc:source
-  rdf:type owl:AnnotationProperty ;
-.
-dc:subject
-  rdf:type owl:AnnotationProperty ;
-.
-dc:type
-  rdf:type owl:AnnotationProperty ;
-.
+
 
 
