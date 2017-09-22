@@ -315,7 +315,11 @@ epos:implements
   rdfs:range epos:Distribution ;
 .
 
-
+epos:accessMethod  
+  rdf:type owl:ObjectProperty;
+  rdfs:domain epos:Distribution ;
+  rdfs:range epos:Operation ;
+.
 
   ####
   # Shapes 
@@ -1357,6 +1361,11 @@ epos:DistributionShape
       sh:class dct:RightsStatement ;
       sh:maxCount 1 ;
     ] ;
+  sh:property [
+      sh:path epos:accessMethod ;
+      sh:class epos:Operation ;
+      sh:maxCount 1 ;
+    ] ;  
   sh:property [
       sh:path dct:title ;
       sh:nodeKind sh:Literal ;
