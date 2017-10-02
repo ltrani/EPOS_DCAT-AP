@@ -1,0 +1,112 @@
+@base <www.orfeus-eu.org> .
+@prefix orfeus: <www.orfeus-eu.org> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix epos: <http://www.epos-eu.org/epos/dcat-ap#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix hydra: <http://www.w3.org/ns/hydra/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bgs: <http://www.http://www.bgs.ac.uk#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cnt: <http://www.w3.org/2011/content#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+<#EIDA/ODC/WFCatalog> a epos:WebService;
+				dct:identifier "uniqueServiceID"^^dct:URI;
+				dct:title "WFCatalog at the Orfeus Data Centre";
+				dct:description "WFCatalog Webservice provides detailed information on the contents of waveform data including quality control parameters.";
+				dct:issued "2017-09-01"^^xsd:date;
+				dct:modified "2017-09-01"^^xsd:date;
+				hydra:entrypoint "http://www.orfeus-eu.org/eidaws/wfcatalog/1/"^^xsd:string;
+				epos:supportedOperation <#EIDA/ODC/WFCatalog/query>;
+				.
+				
+<#EIDA/ODC/WFCatalog/query> a epos:Operation; 
+               hydra:method "GET"^^xsd:string;
+               hydra:IriTemplate[ a hydra:Rfc6570Template; 
+               hydra:template "http://www.orfeus-eu.org/eidaws/wfcatalog/1/query/(?start,end,net,sta,cha)"^^xsd:string;
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "start"^^xsd:string;
+               	hydra:required "true"^^xsd:boolean;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "start"^^xsd:string;
+               	hydra:required "true"^^xsd:boolean;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "end"^^xsd:string;
+               	hydra:required "true"^^xsd:boolean;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "net"^^xsd:string;
+               	hydra:required "false"^^xsd:boolean;
+               ];
+               hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "sta"^^xsd:string;
+               	hydra:required "false"^^xsd:boolean;
+               ];
+                hydra:mapping[ a hydra:IriTemplateMapping;
+               	hydra:variable "cha"^^xsd:string;
+               	hydra:required "false"^^xsd:boolean;
+               ];
+               ];
+.
+<#KNMI> a epos:Organisation;
+			dct:identifier "PICidentifier"^^dct:URI;
+			vcard:fn "Royal Netherlands Meteorological Institute";
+			vcard:organization-name "";
+			vcard:hasAddress [ a vcard:Address;
+				vcard:street-address "Utrechtseweg 297";
+				vcard:locality "De Bilt";
+				vcard:postal-code "3731GA";
+				vcard:country-name "Netherlands";
+			];
+			.
+<orfeus:SeismicWaveform> a skos:Concept .
+<#EIDA/ODC/SeismicWaveformMetadataDistribution> a epos:Distribution;
+               dct:identifier "uniqueDistributionID";
+               dct:created ""^^xsd:date;
+               dct:type "http://purl.org/dc/dcmitype/Service";
+               dcat:accessURL <#EIDA/ODC/WFCatalog>;
+               epos:accessMethod <#EIDA/ODC/WFCatalog/query>;
+               dct:format "JSON";
+               dct:conformsTo "https://github.com/obspy/obspy/blob/master/obspy/signal/data/wf_metadata_schema.json";     
+               .
+<#EIDA/ODC/SeismicWaveformDistribution> a epos:Distribution;
+               dct:identifier "uniqueDistributionID";
+               dct:created ""^^xsd:date;
+               dct:type "http://purl.org/dc/dcmitype/Service";
+               dcat:accessURL <#FDSN/ODC/Dataselect>;
+               epos:accessMethod <#FDSN/ODC/Dataselect/query>;
+               dct:format "MSEED";
+               dct:conformsTo "https://www.fdsn.org/seed_manual/SEEDManual_V2.4.pdf";     
+               .
+<#EIDA/ODC/ContinuousSeismicWaveform> a epos:Dataset;
+        dct:title "Raw seismological waveform data";
+        dct:identifier "uniqueDatasetID";
+        dct:description "Continuous seismic waveforms";
+        dct:accrualPeriodicity "Continuously updated";
+        dct:created ""^^xsd:date;
+        cnt:characterEncoding "UTF-8";
+        dct:type "http://purl.org/dc/dcmitype/Collection";
+        dct:subject "Seismic waveform";
+        dcat:theme  <orfeus:SeismicWaveform> ;
+        dcat:contactPoint <#KNMI>; 
+        dcat:distribution <#EIDA/ODC/SeismicWaveformDistribution>;
+        .      
+<#EIDA/ODC/DailySeismologicalMetadata> a epos:Dataset;
+        dct:title "Seismological waveform metadata";
+        dct:identifier "uniqueDatasetID";
+        dct:description "Domain specific seismological metadata and quality metrics computed on seismic waveforms";
+        dct:accrualPeriodicity "Daily";
+        dct:created ""^^xsd:date;
+        cnt:characterEncoding "UTF-8";
+        dct:type "http://purl.org/dc/dcmitype/Collection";
+        dct:subject "Seismic waveform metadata";
+        dcat:theme  <orfeus:SeismicWaveform> ;
+        dcat:contactPoint <#KNMI>; 
+        dcat:distribution <#EIDA/ODC/SeismicWaveformMetadata>;
+        .
+				
