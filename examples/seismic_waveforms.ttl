@@ -87,7 +87,7 @@
         dct:title "Raw seismological waveform data";
         dct:identifier "uniqueDatasetID";
         dct:description "Continuous seismic waveforms";
-        dct:accrualPeriodicity "Continuously updated";
+        dct:accrualPeriodicity "Continuous";
         dct:created ""^^xsd:date;
         cnt:characterEncoding "UTF-8";
         dct:type "http://purl.org/dc/dcmitype/Collection";
