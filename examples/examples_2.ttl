@@ -137,13 +137,3 @@
                         epos:legalContact <#ChrisLuton>;
                         epos:finalcialContact <#AmandaClewes>;
 			.
-
-
-<#WorldMagneticModel> a epos:WebService;
-			dct:identifier "uniqueServiceID"^^dct:URI;
-			hydra:title "World Magnetic Model (WMM)";
-			dct:description "The World Magnetic Model (WMM), produced jointly with the US National Oceanographic and Atmospheric Administration's National Geophysical Data Center, is the standard model in UK Ministry of Defence and US Department of Defense navigation and attitude reference systems and is also used widely in civilian navigation systems";
-			dct:issued "2015-12-01T00:00:00"^^xsd:date;
-			dct:modified "2015-12-01T00:00:00"^^xsd:date;
-			
-			.
