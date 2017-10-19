@@ -165,6 +165,7 @@ epos:WebService
   a owl:Class ;
   rdfs:comment "It represents a WebService API "@en  ;  
   rdfs:subClassOf hydra:ApiDocumentation;
+  rdfs:subClassOf rdfs:Resource ;
   rdfs:label "WebService"@en  ;     
   rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
 .
@@ -502,12 +503,12 @@ epos:CatalogRecordShape
       ] ;    
   sh:property [
       sh:path dct:conformsTo ;
-      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:class dct:Standard;
       sh:maxCount 1 ;
     ] ;
   sh:property [
       sh:path dct:conformsTo ;
-      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:class dct:Standard;
       sh:minCount 1 ;
       sh:message "Application Profile is recommended. Please fill in a value"@en  ;      
       sh:severity sh:Warning ;
@@ -1276,11 +1277,11 @@ epos:DistributionShape
   ###   
   sh:property [
       sh:path dct:conformsTo ;
-      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:class dct:Standard;
     ] ;
   sh:property [
       sh:path dct:conformsTo ;
-      sh:nodeKind sh:BlankNodeOrIRI ;
+      sh:class dct:Standard;
       sh:minCount 1 ;
       sh:message "Linked schemas (conformsTo) is recommended. Please fill in a value"@en  ; 
       sh:severity sh:Warning ;     
