@@ -12,11 +12,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix cnt: <http://www.w3.org/2011/content#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix sdmx-code: <http://purl.org/linked-data/sdmx/2009/code#> .
+#@prefix sdmx-code: <http://purl.org/linked-data/sdmx/2009/code#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix freq: <http://dublincore.org/groups/collections/frequency/> .
 
 <#KNMI/ODC> a epos:Organisation;
-			dct:identifier "PICidentifier"^^dct:URI;
+			dct:identifier "PICidentifier";
 			vcard:fn "Royal Netherlands Meteorological Institute";
 			vcard:organization-name "";
 			vcard:hasAddress [ a vcard:Address;
@@ -28,7 +29,7 @@
 			.
 
 <#FDSN/ODC/Dataselect> a epos:WebService;
-				dct:identifier "uniqueServiceID"^^dct:URI;
+				dct:identifier "uniqueServiceID";
 				dct:title "FDSN Dataselect WebService at the Orfeus Data Centre";
 				dct:description "The FDSN Dataselect WebService provides access to Seismological time series data.";
 				dct:issued "2017-01-01"^^xsd:date;
@@ -110,7 +111,7 @@
                ];
                .
 #Example of domain specific vocabulary. Using skos to define community bundles			   
-#This is a container concepts  
+#This is a container of concepts  
 <#Seismology> a skos:ConceptScheme;
               dct:title "Seismology";
               dct:description "It contains the concepts of the Seismology domain";
@@ -145,7 +146,8 @@
         dct:title "Primary Seismic Waveform Data"@en;
         dct:identifier "WFDatasetID";
         dct:description "Continuous seismic waveforms"@en;
-        dct:accrualPeriodicity sdmx-code:freq-N;
+        ## example of frequency using a controlled vocabulary 
+        dct:accrualPeriodicity "http://purl.org/cld/freq/continuous";
         dct:created "1993-01-01"^^xsd:date;
         cnt:characterEncoding "UTF-8";
         dct:type "http://purl.org/dc/dcmitype/Collection";
@@ -159,7 +161,7 @@
         dct:title "Seismic waveform metadata"@en;
         dct:identifier "WFMetaDatasetID";
         dct:description "Domain specific seismological metadata and quality metrics computed on seismic waveforms"@en;
-        dct:accrualPeriodicity sdmx-code:freq-D;
+        dct:accrualPeriodicity "continuously updated"@en;
         dct:created "1990-01-01"^^xsd:date;
         cnt:characterEncoding "UTF-8";
         dct:type "http://purl.org/dc/dcmitype/Collection";
