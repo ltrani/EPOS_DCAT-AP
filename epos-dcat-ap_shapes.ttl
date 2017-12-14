@@ -69,22 +69,23 @@
   ####
   # Classes 
   ###
+##changed to dcat:Dataset no need to redefine it
+#epos:Dataset
+ # a owl:Class ;
+ # rdfs:comment "EPOS specialisation of dcat:Dataset"@en  ;
+  #rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  #rdfs:label "Dataset"@en  ;
+  #rdfs:subClassOf dcat:Dataset ;
+#.
+##changed to dcat:Dataset
 
-epos:Dataset
-  a owl:Class ;
-  rdfs:comment "EPOS specialisation of dcat:Dataset"@en  ;
-  rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap/> ;
-  rdfs:label "Dataset"@en  ;
-  rdfs:subClassOf dcat:Dataset ;
-.
-
-epos:Distribution
-  a owl:Class ;
-  rdfs:comment "EPOS specialisation of dcat:Distribution"@en  ;
-  rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
-  rdfs:label "Distribution"@en  ;
-  rdfs:subClassOf dcat:Distribution ;
-.
+#epos:Distribution
+#  a owl:Class ;
+ # rdfs:comment "EPOS specialisation of dcat:Distribution"@en  ;
+  #rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  #rdfs:label "Distribution"@en  ;
+  #rdfs:subClassOf dcat:Distribution ;
+#.
 epos:Equipment
   a owl:Class ;
   rdfs:comment "A resource representing a generic equipment. E.g. gps sensor, seismic station's channel"@en  ;
@@ -118,14 +119,14 @@ epos:Organisation
   rdfs:label "Organisation"@en  ; 
   rdfs:subClassOf vcard:Organization ;
 .
-
-epos:CatalogRecord
-  a owl:Class ;
-  rdfs:comment "EPOS specialisation of dcat:CatalogRecord"@en  ;
-  rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
-  rdfs:label "CatalogRecord"@en  ;   
-  rdfs:subClassOf dcat:CatalogRecord ;
-.
+##changed to dcat:CatalogRecord no need to redefine it
+#epos:CatalogRecord
+#  a owl:Class ;
+ # rdfs:comment "EPOS specialisation of dcat:CatalogRecord"@en  ;
+  #rdfs:isDefinedBy <http://www.epos-eu.org/epos/dcat-ap> ;
+  #rdfs:label "CatalogRecord"@en  ;   
+  #rdfs:subClassOf dcat:CatalogRecord ;
+#.
 epos:Person
   a owl:Class ;
   rdfs:comment "EPOS specialisation of vcard:Person"@en  ;  
